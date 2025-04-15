@@ -1,0 +1,9 @@
+version: '3'
+services:
+  krillin:
+    image: ghcr.io/krillinai/krillinai:1.1.2
+    ports:
+      - "8888:8888"
+    volumes:
+      - /path/to/models:/app/models
+      - /path/to/config.toml:/app/config/config.toml

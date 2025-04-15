@@ -1,0 +1,28 @@
+lzc-sdk-version: "0.1"
+name: Krillin AI
+package: cloud.lazycat.app.krillinai
+version: 1.1.2
+description: 一款全能型音视频本地化与增强解决方案
+homepage: https://github.com/krillinai/KrillinAI
+author: krillinai
+application:
+  subdomain: krillinai
+  background_task: true
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  public_path:
+    - /
+  routes:
+    - /=http://krillin:8888/
+services:
+  krillin:
+    image: registry.lazycat.cloud/czyt/krillinai/krillinai:e9b8851e967f3250
+    binds:
+      - /lzcapp/var/models:/app/models
+      - /lzcapp/var/config:/app/config
+    setup_script: |
+        if [ -f /app/config/config.toml ];then
+          cp /lzcapp/pkg/content/config.toml /app/config/config.toml
+        fi
