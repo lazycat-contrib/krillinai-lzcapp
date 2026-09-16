@@ -1,0 +1,14 @@
+package: cloud.lazycat.app.krillinai
+version: 1.1.2
+name: Krillin AI
+description: "一款全能型音视频本地化与增强解决方案"
+min_os_version: "1.5.0"
+homepage: https://github.com/krillinai/KrillinAI
+author: krillinai
+locales:
+  zh:
+    name: Krillin AI
+    description: "一款全能型音视频本地化与增强解决方案"
+  en:
+    name: Krillin AI
+    description: "An all-in-one audio/video localization and enhancement solution"

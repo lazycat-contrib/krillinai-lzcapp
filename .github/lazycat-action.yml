@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/krillinai.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: krillin
+
+build:
+  run_buildscript: false
+
+images:
+  - id: krillin
+    target: service
+    service: krillin
+    source: ghcr.io/krillinai/krillinai
+    channel: custom
+    sort: semver
+    tag_regex: '^1\.1\.2$'
+    delivery:
+      mode: mirror
+
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Krillin AI
+    summary: "全能型音视频本地化与增强解决方案"
