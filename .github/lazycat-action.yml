@@ -7,26 +7,15 @@ project:
   output: .lazycat-build/krillinai.lpk
   target_arch: amd64
 
+# 上游镜像 ghcr.io/krillinai/krillinai 已私有化/下线（krillinai/KrillinAI 改名 OpenCreator），
+# 无法配置镜像自动投递；改走 Git 版本源 + 保留 lazycat 既有镜像引用，发布链保持可用。
 update:
   strategy: publish
-  allow_downgrade: false
   version_source:
-    type: image
-    image: krillin
+    type: git
 
 build:
   run_buildscript: false
-
-images:
-  - id: krillin
-    target: service
-    service: krillin
-    source: ghcr.io/krillinai/krillinai
-    channel: custom
-    sort: semver
-    tag_regex: '^1\.1\.2$'
-    delivery:
-      mode: mirror
 
 stores:
   official:
